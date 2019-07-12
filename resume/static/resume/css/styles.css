@@ -691,6 +691,10 @@ footer {
         margin-right: -4%;
     }
 
+    .nav-scrolled {
+        width: 101%;
+    }
+
     .form-control {
         width: 85vw;
     }
