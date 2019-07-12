@@ -23,20 +23,20 @@ class Project(models.Model):
         max_length=1000,
         default='None'
         )
-    image = models.ImageField(
-        upload_to='images/project_images',
+    image = models.URLField(
+        max_length=500,
         default='None'
         )
-    carousel_image1 = models.ImageField(
-        upload_to='images/project_images',
+    carousel_image1 =models.URLField(
+        max_length=500,
         default='None'
         )
-    carousel_image2 = models.ImageField(
-        upload_to='images/project_images',
+    carousel_image2 = models.URLField(
+        max_length=500,
         default='None'
         )
-    carousel_image3 = models.ImageField(
-        upload_to='images/project_images',
+    carousel_image3 = models.URLField(
+        max_length=500,
         default='None'
         )
     carouselTitle = models.CharField(
