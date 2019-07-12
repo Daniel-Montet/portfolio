@@ -687,6 +687,10 @@ footer {
         margin-right: -1%;
     }
 
+    #main-nav a {
+        margin-right: -4%;
+    }
+
     .form-control {
         width: 85vw;
     }
