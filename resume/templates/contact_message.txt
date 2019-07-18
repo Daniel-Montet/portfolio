@@ -1,0 +1,12 @@
+
+You received a message from your contact from, from the user:
+
+{{ user }}
+
+This is what they said:
+
+{{ message }}
+
+Reply to this email:
+
+{{ email }}

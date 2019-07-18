@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.template.loader import get_template
 from django.views.generic import View
 
 from . import forms
@@ -30,8 +32,32 @@ def resume(request):
             message = form.cleaned_data['message']
             recipients = ['dmontetproff@gmail.com']
 
-            send_mail(name, message, sender, recipients)
+            # send_mail(name, message, sender, recipients)
+            # messages.add_message(request, messages.SUCCESS, "Message Sent Successfully :)")
+
+            #Email myself the submiteted contact message
+
+            subject = 'Job opportunity contact from your website'
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_email = [settings.DEFAULT_FROM_EMAIL]
+
+            #Option 1
+
+            # contact_message = "{0}, from {1} with email {2}".format(message, name, sender)
+
+            #Option 2
+
+            context = {
+                'user': name,
+                'email': sender,
+                'message': message
+            }
+
+            contact_message = get_template('contact_message.txt').render(context)
+            send_mail(subject, contact_message, from_email, to_email)
             messages.add_message(request, messages.SUCCESS, "Message Sent Successfully :)")
+
+
 
     else:
         form = forms.MailMe()
