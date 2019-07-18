@@ -54,7 +54,7 @@ def resume(request):
             }
 
             contact_message = get_template('contact_message.txt').render(context)
-            send_mail(subject, contact_message, from_email, to_email)
+            send_mail(subject, contact_message, from_email, to_email, fail_silently=True)
             messages.add_message(request, messages.SUCCESS, "Message Sent Successfully :)")
 
 
